@@ -19,9 +19,10 @@ body main{
 }
 
 h1{
-    color: aliceblue;
+    color: rgb(2, 16, 29);
     font-size: 2rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
 }
 
 footer{
@@ -51,5 +52,17 @@ ul{
     line-height: 40px;
 }
 
+.back_button{
+    color: white;
+    background-color: aqua;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+}
 
+.back_button a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
 

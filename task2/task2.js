@@ -1,24 +1,22 @@
-/*json строка*/
-const jSonString = 
-`{
-  "name":"Anton",
-  "age":36,
-  "skills":["Javascript","HTML","CSS"],
-  "salary":80000
-}`
-/*парсим в JS*/
-const data = JSON.parse(jSonString);
+const btn = document.querySelector('.j-btn-test');
+let icon1 = document.querySelector('.btn_icon1');
+let icon2 = document.querySelector('.btn_icon2');
 
-/*создаем объект*/
-const result = {
-  name: data.name,
-  age: data.age,
-  skills: data.skills,
-  salary: data.salary
-}
+btn.addEventListener('click', () => {
 
-/*выводим объект*/
-console.log(result);
+  console.log(icon2);
+  if (icon2.style.display == 'none')
+  {
+    console.log("1"+icon2.style.display);
+    icon1.style.display = 'none';
+    icon2.style.display = 'block';
+   }  
+  else
+  {
+    console.log("2"+icon2.style.display);
+    icon2.style.display = 'none';
+    icon1.style.display = 'block';
+  }  
 
-/*создаем JSON из объекта и выводим в консоль*/
-console.log(JSON.stringify(result)); 
+
+});

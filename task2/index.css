@@ -1,0 +1,18 @@
+.btn_text {
+  color: rgb(48, 8, 8);
+  font-style: italic;
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+.btn_icon2{
+  display: none;
+}
+
+.btn_icon1{
+  display: block;
+}
+
+.div_main{
+  text-align: center;
+}
