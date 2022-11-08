@@ -1,31 +1,40 @@
-/*функция при загрузке страницы*/
-function pageLoaded(){
-    const myJSON = localStorage.getItem('myJSON');
-    /*если данные есть*/
-    if (myJSON){
-        let dataJson = JSON.parse(myJSON);
-        const name = dataJson.name;
-        const date = dataJson.date; 
-        const time = dataJson.time; 
-        alert(`Добрый день,${name}! Давно не виделись. 
-        В последний раз вы были у нас ${date} в ${time}`);
-        dataJson.date = new Date().toLocaleDateString();
-        dataJson.time = new Date().toLocaleTimeString().slice(0,-3);
-        localStorage.setItem('myJSON', JSON.stringify(dataJson));
+
+function pageLoaded() {
+  const btn = document.getElementById("button");
+  const output = document.getElementById("output");
+  
+  btn.addEventListener("click", getLocation);
+  
+  function getLocation() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
+    } else {
+      writeOutput("В вашем браузере недоступна возможность определения местоположения");
     }
-    /*данных нет*/
-    else{
-        const name = prompt('Добро пожаловать! Назовите, пожалуйста, ваше имя', 'введите имя');
-        const date = new Date().toLocaleDateString();
-        const time = new Date().toLocaleTimeString().slice(0,-3);
-        let json = {
-          name:name,
-          date:date,
-          time:time
-        }
-        localStorage.setItem('myJSON', JSON.stringify(json));
-        
-    }
+  }
+  
+  function locationSuccess(data) {
+      let outputText = formatOutput(data);
+      writeOutput(outputText);
+  }
+  
+
+  function locationError() {
+    writeOutput("При определении местоположения произошла ошибка");
+  }
+    
+  function formatOutput(data) {
+    let html = `
+    <p>Размеры экрана пользователя: ширина (${window.screen.width} пкс), высота (${window.screen.height} пкс))</p>  
+    <p>Координаты местонахождения пользователя: долгота (${data.coords.longitude}&deg;), широта (${data.coords.latitude}&deg;)</p>
+      
+    `;
+    return html;
+  }
+  
+  function writeOutput(message) {
+    output.innerHTML = message;
+  }
 }
 
 document.addEventListener("DOMContentLoaded", pageLoaded);
