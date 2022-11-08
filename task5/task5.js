@@ -49,7 +49,7 @@ function pageLoaded() {
   }
   
   function locationError() {
-    writeOutput("При получении местоположения произошла ошибка");
+    writeToChat("При получении местоположения произошла ошибка");
   }
   
   function writeOutput(message) {
